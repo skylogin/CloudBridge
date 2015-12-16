@@ -1,0 +1,110 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+*{font-family: "Nanum Gothic Coding"}:
+
+html{
+  font-family:sans-serif;
+  -webkit-text-size-adjust:100%;
+  -ms-text-size-adjust:100%;
+}
+
+/* Masthead for nav */
+.blog-masthead {
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+  position:fixed;
+  right:0;left:0;
+}
+
+/* Nav links */
+.blog-nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500;
+  color: #cdddeb;
+}
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Active state gets a caret at the bottom */
+.blog-nav .active {
+  color: #fff;
+}
+.blog-nav .active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
+}
+
+
+/* Blog name and description */
+.blog-header {
+  padding-top: 80px;
+  padding-bottom: 30px;
+  text-align:center;
+}
+
+.cloud-icon{
+  font-size: 140px;
+  color: #428BCA;
+}
+.cloud-title{
+  font-size: 24px;
+  margin-top: -30px;
+  font-weight: bold;
+}
+
+
+.bs-callout li{
+  font-size:12px;
+}
+
+/* Footer */
+.blog-footer {
+  position:fixed;
+  bottom:0; left:0; right:0;
+  padding: 15px 0;
+  color: #999;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-footer .container{
+  width:100%;
+  float:left;
+  text-align: center;
+}
+.cloudName{
+  width:15%;
+  display:inline-block;
+}
+.cloudContent{
+  width:80%;
+  display:inline-block;
+}
+
+.blog-footer .container input{
+  width:100%;
+}
+
+.blog-footer input {
+  color: #000;
+}
+
+.cloud-logo{
+  font-size:20px;
+  letter-spacing: -10px;
+}
