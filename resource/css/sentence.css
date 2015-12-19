@@ -1,0 +1,39 @@
+.blog-notice{
+	position:fixed;
+	bottom:45px; left:0; right:0;
+	padding:5px 0;
+	background-color: #000;
+	text-align:left;
+}
+
+.blog-notice > .container{
+	margin-left:30px;
+}
+
+.noticeMessage, .clickMessage{
+	font-size:12px;
+	color: #f0ad4e;
+	font-weight: bold;
+	margin:0;
+}
+
+.list-group-item{
+	width:100%;
+	float:left;
+}
+.list-group ol{
+	text-align: left;
+	font-size:12px;
+}
+
+.leftContent{
+	width:75%;
+	float:left;
+}
+
+.rightContent{
+	width:25%;
+	text-align:right;
+	float:right;
+	font-size:11px;
+}

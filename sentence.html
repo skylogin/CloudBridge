@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="resource/css/reset.css" rel="stylesheet" media="screen">
+	<link href="resource/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+	<link href="resource/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="resource/css/docs.min.css" rel="stylesheet" media="screen">
+	<link href="resource/css/header.css" rel="stylesheet" media="screen">
+	<link href="resource/css/sentence.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div id="wrap">
+
+	<!-- 상단 메뉴 -->
+	<div class="blog-masthead">
+		<div class="container">
+			<nav class="blog-nav">
+				<a id="menu1" class="blog-nav-item" href=""></a>
+				<a id="menu2" class="blog-nav-item active" href=""></a>
+				<a id="menu3" class="blog-nav-item" href=""></a>
+				<a id="menu4" class="blog-nav-item" href=""></a>
+				<a id="lang" class="blog-nav-item" href="#" onclick="changeLang();"></a>
+			</nav>
+		</div>
+	</div>
+	
+	<!-- 메인 -->
+	<div class="blog-header">
+		<div class="container">
+			<div class="list-group">
+				<ol>
+					<li class="list-group-item">
+						<div class="leftContent">
+							<p class="list-group-item-heading">
+								가나달
+								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+							</p>
+						</div>
+						<div class="rightContent">
+							<span class="glyphicon glyphicon-user">피카딜구</span>
+							/
+							<span class="glyphicon glyphicon-thumbs-up">32</span>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="leftContent">
+							<p class="list-group-item-heading">
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+							</p>
+						</div>
+						<div class="rightContent">
+							<span class="glyphicon glyphicon-user">피카딜3번출구</span>
+							/
+							<span class="glyphicon glyphicon-thumbs-up">32</span>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="leftContent">
+							<p class="list-group-item-heading">
+								본문클릭하면 댓글달기<br/>
+								댓글은 단 순서대로 달림 (디비 insert 순)<br />
+								우측 사용자쪽 누르면 좋아요 올라감<br/>
+								로컬스토리지 이용해서 좋아요 누른거는 못클릭하게 변경
+								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+							</p>
+						</div>
+						<div class="rightContent">
+							<span class="glyphicon glyphicon-user content-nick">피카딜리서커스역3번출구</span>
+							/
+							<span class="glyphicon glyphicon-thumbs-up content-thumbup">14</span>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="leftContent">
+							<span class="label label-warning"> </span>
+							<p class="list-group-item-heading">
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+							</p>
+						</div>
+						<div class="rightContent">
+							<span class="glyphicon glyphicon-user">피카</span>
+							/
+							<span class="glyphicon glyphicon-thumbs-up">5</span>
+						</div>
+					</li>
+
+				</ol>
+			
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- 공지 -->
+	<div class="blog-notice">
+		<div class="container">
+			<span class="glyphicon glyphicon-bullhorn noticeMessage"></span> 
+			<span id="noticeMessage" class="noticeMessage"></span>
+			<span class="clickMessage"></span>
+		</div>
+	</div>
+
+	<!-- 하단 -->
+	<div class="blog-footer">
+		
+		<div class="container">
+			<div class="cloudName">
+				<input type="text" id="userName" class="form-control input-sm" placeholder=""/>
+			</div>
+			<div class="cloudContent">
+				<input type="text" id="userContent" class="form-control input-sm" placeholder=""/>
+			</div>
+			</ul>
+		</div>
+	</div>
+
+
+
+</div>
+<script src="resource/js/jquery.min.js"></script> 
+<script src="resource/js/bootstrap.min.js"></script>
+<script src="resource/js/constants.js"></script>
+<script type="text/javascript">
+	var langFlag = getParameterByName("langFlag");
+
+	$(document).ready(function(){
+		setLang(langFlag);
+	});
+</script>
+</body>
+</html>

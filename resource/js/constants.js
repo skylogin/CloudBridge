@@ -1,5 +1,37 @@
-var CONSTANT_KO = function() {
+var CONSTANT = function(){
 	var message = {
+		url1		: "./index.html?langFlag=en",
+		url2		: "././sentence.html?langFlag=en",
+		url3		: "",
+		url4		: "",
+		title		: "CloudBridge",
+		menu1		: "Start",
+		menu2		: "Sentence",
+		menu3		: "Talk",
+		menu4		: "Conversation",
+		lang		: "Language",
+		id 	    	: "Email",
+		pw			: "Password",
+		signin	 	: "Sign in",
+		signup		: "Sign up",
+		nick		: "Name",
+		message		: "Word, Sentence, anything.",
+		clickMessage: "If you <code>click</code>, you can enter a comment.",
+		label1		: "RE:",
+		label2		: "",
+		label3		: "",
+		label4		: "",
+		label5		: "",
+		label6		: "",
+		notice1		: "Kind word can make others laugh even cry also."
+
+	}
+
+	var message_ko = {
+		url1		: "./index.html?langFlag=ko",
+		url2		: "./sentence.html?langFlag=ko",
+		url3		: "",
+		url4		: "",
 		title		: "구름다리",
 		menu1		: "시작",
 		menu2		: "한마디",
@@ -11,41 +43,38 @@ var CONSTANT_KO = function() {
 		signin	 	: "로그인",
 		signup		: "가입하기",
 		nick		: "이름",
-		message		: "단어, 문장, 어떤 것이라도"
+		message		: "단어, 문장, 어떤 것이라도.",
+		clickMessage: "<code>클릭</code>하면 댓글을 입력할 수 있습니다.",
+		label1		: "댓글:",
+		label2		: "",
+		label3		: "",
+		label4		: "",
+		label5		: "",
+		label6		: "",
+		notice1		: "따뜻한 말 한마디는 남을 웃게도 울게도 만들 수 있습니다."
+
 	}
 
-	
-	return {
-		getValue: function(s){
-			return message[s];
-		}
-	}
-}();
-
-var CONSTANT_EN = function(){
-	var message = {
-		title: "CloudBridge",
-		menu1		: "Start",
-		menu2		: "Sentence",
-		menu3		: "Talk",
-		menu4		: "Conversation",
-		lang		: "Language",
-		id 	    	: "Email",
-		pw			: "Password",
-		signin	 	: "Sign in",
-		signup		: "Sign up",
-		nick		: "Name",
-		message		: "Word, Sentence, anything."
-	}
 
 	return {
-		getValue: function(s){
-			return message[s];
+		getValue: function(s, lang){
+			if(lang == "en"){
+				return message[s];
+			} else if(lang == "ko"){
+				return message_ko[s];
+			}
+			
 		}
 	}
 
 }();
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function changeLang(){
 	if(langFlag == "en"){
@@ -56,51 +85,51 @@ function changeLang(){
 
 	setLang(langFlag);
 }
+
 function setLang(lang){
-	if(lang == "en"){
-		document.title = CONSTANT_EN.getValue("title");
-		$("#menu1").html(CONSTANT_EN.getValue("menu1"));
-		$("#menu2").html(CONSTANT_EN.getValue("menu2"));
-		$("#menu3").html(CONSTANT_EN.getValue("menu3"));
-		$("#menu4").html(CONSTANT_EN.getValue("menu4"));
+	document.title = CONSTANT.getValue("title", lang);
+	$("#menu1").html(CONSTANT.getValue("menu1", lang));
+	$("#menu2").html(CONSTANT.getValue("menu2", lang));
+	$("#menu3").html(CONSTANT.getValue("menu3", lang));
+	$("#menu4").html(CONSTANT.getValue("menu4", lang));
 
-		$("#lang").html(CONSTANT_EN.getValue("lang"));
+	$("#menu1").attr("href", CONSTANT.getValue("url1", lang));
+	$("#menu2").attr("href", CONSTANT.getValue("url2", lang));
+	$("#menu3").attr("href", CONSTANT.getValue("url3", lang));
+	$("#menu4").attr("href", CONSTANT.getValue("url4", lang));
 
-		$(".cloud-title").html(CONSTANT_EN.getValue("title"));
 
-		$(".inputEmail").html(CONSTANT_EN.getValue("id"));
-		$(".inputPassword").html(CONSTANT_EN.getValue("pw"));
-		
-		$("#inputEmail").attr("placeholder", CONSTANT_EN.getValue("id"));
-		$("#inputPassword").attr("placeholder", CONSTANT_EN.getValue("pw"));
+	$("#lang").html(CONSTANT.getValue("lang", lang));
 
-		$("#loginBtn").val(CONSTANT_EN.getValue("signin"));
-		$("#joinBtn").val(CONSTANT_EN.getValue("signup"));
+	$(".cloud-title").html(CONSTANT.getValue("title", lang));
 
-		$("#userName").attr("placeholder", CONSTANT_EN.getValue("nick"));
-		$("#userContent").attr("placeholder", CONSTANT_EN.getValue("message"));
-	} else if(lang == "ko"){
-		document.title = CONSTANT_KO.getValue("title");
-		$("#menu1").html(CONSTANT_KO.getValue("menu1"));
-		$("#menu2").html(CONSTANT_KO.getValue("menu2"));
-		$("#menu3").html(CONSTANT_KO.getValue("menu3"));
-		$("#menu4").html(CONSTANT_KO.getValue("menu4"));
-
-		$("#lang").html(CONSTANT_KO.getValue("lang"));
-
-		$(".cloud-title").html(CONSTANT_KO.getValue("title"));
-
-		$(".inputEmail").html(CONSTANT_KO.getValue("id"));
-		$(".inputPassword").html(CONSTANT_KO.getValue("pw"));
-		
-		$("#inputEmail").attr("placeholder", CONSTANT_KO.getValue("id"));
-		$("#inputPassword").attr("placeholder", CONSTANT_KO.getValue("pw"));
-
-		$("#loginBtn").val(CONSTANT_KO.getValue("signin"));
-		$("#joinBtn").val(CONSTANT_KO.getValue("signup"));
-
-		$("#userName").attr("placeholder", CONSTANT_KO.getValue("nick"));
-		$("#userContent").attr("placeholder", CONSTANT_KO.getValue("message"));
-	}
+	$(".inputEmail").html(CONSTANT.getValue("id", lang));
+	$(".inputPassword").html(CONSTANT.getValue("pw", lang));
 	
+	$("#inputEmail").attr("placeholder", CONSTANT.getValue("id", lang));
+	$("#inputPassword").attr("placeholder", CONSTANT.getValue("pw", lang));
+
+	$("#loginBtn").val(CONSTANT.getValue("signin", lang));
+	$("#joinBtn").val(CONSTANT.getValue("signup", lang));
+
+	$("#userName").attr("placeholder", CONSTANT.getValue("nick", lang));
+	$("#userContent").attr("placeholder", CONSTANT.getValue("message", lang));
+
+	$(".label-warning").html(CONSTANT.getValue("label1", lang));
+
+	$(".clickMessage").html(CONSTANT.getValue("clickMessage", lang));
+
+	/*
+	$(".label-primary").html(CONSTANT.getValue("label2", lang));
+	$(".label-success").html(CONSTANT.getValue("label3", lang));
+	$(".label-info").html(CONSTANT.getValue("label4", lang));
+	$(".label-warning").html(CONSTANT.getValue("label5", lang));
+	$(".label-danger").html(CONSTANT.getValue("label6", lang));
+	*/
+
+	$("#noticeMessage").html(CONSTANT.getValue("notice1", lang));
+
+
+
+
 }
