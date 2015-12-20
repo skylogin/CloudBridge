@@ -10,9 +10,9 @@ var CONSTANT = function(){
 		menu3		: "Talk",
 		menu4		: "Conversation",
 		lang		: "Language",
-		id 	    	: "Email",
+		id 	    	: "Email (abc@xyz.com)",
 		pw			: "Password",
-		pwConfirm 	: "Confirm PW",
+		name 	 	: "Name",
 		signin	 	: "Sign in",
 		signup		: "Sign up",
 		nick		: "Name",
@@ -41,7 +41,7 @@ var CONSTANT = function(){
 		lang		: "나랏말",
 		id 	    	: "이메일주소",
 		pw			: "비밀번호",
-		pwConfirm 	: "비밀번호 확인",
+		name 		: "이름",
 		signin	 	: "로그인",
 		signup		: "가입하기",
 		nick		: "이름",
@@ -107,15 +107,15 @@ function setLang(lang){
 
 	$(".inputEmail").html(CONSTANT.getValue("id", lang));
 	$(".inputPassword").html(CONSTANT.getValue("pw", lang));
-	$(".inputPasswordConfirm").html(CONSTANT.getValue("pwConfirm", lang));
+	$(".inputName").html(CONSTANT.getValue("name", lang));
 	
 	$("#inputEmail").attr("placeholder", CONSTANT.getValue("id", lang));
 	$("#inputPassword").attr("placeholder", CONSTANT.getValue("pw", lang));
-	$("#inputPasswordConfirm").attr("placeholder", CONSTANT.getValue("pw", lang));
+	$("#inputName").attr("placeholder", CONSTANT.getValue("name", lang));
 	
 
 	$("#loginBtn").val(CONSTANT.getValue("signin", lang));
-	$("#joinBtn").val(CONSTANT.getValue("signup", lang));
+	$("#joinBtn").html(CONSTANT.getValue("signup", lang));
 
 	$("#userName").attr("placeholder", CONSTANT.getValue("nick", lang));
 	$("#userContent").attr("placeholder", CONSTANT.getValue("message", lang));

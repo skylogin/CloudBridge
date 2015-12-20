@@ -8,6 +8,7 @@
 	<link href="resource/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="resource/css/docs.min.css" rel="stylesheet" media="screen">
 	<link href="resource/css/header.css" rel="stylesheet" media="screen">
+	<link href="resource/css/index.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div id="wrap">
@@ -34,29 +35,29 @@
 		<div class="container">
 			<form class="form-horizontal">
 				<div class="form-group">
-					<label for="inputEmail" class="col-sm-5 control-label inputEmail"></label>
-					<div class="col-sm-2">
+					<div class="col-sm-2 col-md-offset-5">
 						<input type="email" class="form-control inputEmail" id="inputEmail" placeholder="">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputPassword" class="col-sm-5 control-label inputPassword"></label>
-					<div class="col-sm-2">
+					<div class="col-sm-2 col-md-offset-5">
 						<input type="password" class="form-control inputPassword" id="inputPassword" placeholder="">
 					</div>
 				</div>
-				<div class="form-group passwordConfirm">
-					<label for="inputPassword" class="col-sm-5 control-label inputPasswordConfirm"></label>
-					<div class="col-sm-2">
-						<input type="password" class="form-control inputPassword" id="inputPasswordConfirm" placeholder="">
+				<div class="form-group nameForm">
+					<div class="col-sm-2 col-md-offset-5">
+						<input type="text" class="form-control inputName" id="inputName" placeholder="">
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-5 col-sm-3">
-						<input type="button" id="loginBtn" class="btn btn-default" />
-						<input type="button" id="joinBtn" class="btn btn-primary" onclick="openPasswordConfirmDiv();"/>
+					<div class="col-sm-2 col-sm-offset-5">
+						<input type="button" id="loginBtn" class="btn btn-primary" />
 					</div>
-						
+				</div>
+				<div class="form-group">
+					<div class="col-sm-2 col-sm-offset-5 joinForm">
+						<a id="joinBtn" onclick="openPasswordConfirmDiv();"></a>
+					</div>
 				</div>
 			</form>
 		</div>
@@ -101,21 +102,33 @@
 	function init(){
 		$(".blog-footer").hide();
 		$(".blog-notice").hide();
-		$(".passwordConfirm").hide();
+		$(".nameForm").hide();
 
 		setLang(langFlag);
 	}
 
 	function openPasswordConfirmDiv(){
 		if(joinFlag == "N"){
-			$(".passwordConfirm").show();
+			$(".nameForm").show();
+			$("#loginBtn").attr("onclick", "openPasswordConfirmDiv();").val(CONSTANT.getValue("signup", langFlag));
+			$("#joinBtn").attr("onclick", "openLoginDiv();").html(CONSTANT.getValue("signin", langFlag));
+
+
+
 			joinFlag = "Y";
 		} else if(joinFlag == "Y"){
 			//패스워드 같은지 확인
 			//form값 action으로 넘기기
 			alert("가입됨");
 		}
-		
+	}
+
+	function openLoginDiv(){
+		joinFlag = "N";
+		$(".nameForm").hide();
+		$("#joinBtn").attr("onclick", "openPasswordConfirmDiv();").html(CONSTANT.getValue("signup", langFlag));
+		$("#loginBtn").attr("onclick", "").val(CONSTANT.getValue("signin", langFlag));
+
 	}
 </script>
 </body>

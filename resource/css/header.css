@@ -57,24 +57,9 @@ html{
   text-align:center;
 }
 
-.cloud-icon{
-  font-size: 140px;
-  color: #428BCA;
-}
-.cloud-title{
-  font-size: 24px;
-  margin-top: -30px;
-  font-weight: bold;
-}
 
-.logo{
-  margin-bottom:100px;
-}
 
-.form-group{
-  text-align: left;
 
-}
 
 /* Footer */
 .blog-footer {
@@ -91,6 +76,7 @@ html{
   float:left;
   text-align: center;
 }
+
 .cloudName{
   width:15%;
   display:inline-block;
@@ -108,7 +94,3 @@ html{
   color: #000;
 }
 
-.cloud-logo{
-  font-size:20px;
-  letter-spacing: -10px;
-}

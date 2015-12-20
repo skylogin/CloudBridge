@@ -1,0 +1,37 @@
+.cloud-logo{
+  font-size:20px;
+  letter-spacing: -10px;
+}
+
+.cloud-icon{
+  font-size: 140px;
+  color: #428BCA;
+}
+.cloud-title{
+  font-size: 24px;
+  margin-top: -30px;
+  font-weight: bold;
+}
+
+.logo{
+  margin-bottom:100px;
+}
+
+.form-group{
+  text-align: left;
+
+}
+
+
+#loginBtn{
+	width:100%;	
+}
+
+#joinBtn{
+	width:100%;
+	cursor: pointer;
+	
+}
+.joinForm{
+	text-align:center;
+}
