@@ -1,8 +1,8 @@
 var CONSTANT = function(){
 	var message = {
 		url1		: "./index.html?langFlag=en",
-		url2		: "././sentence.html?langFlag=en",
-		url3		: "",
+		url2		: "./sentence.html?langFlag=en",
+		url3		: "./talk.html?langFlag=en",
 		url4		: "",
 		title		: "CloudBridge",
 		menu1		: "Start",
@@ -12,11 +12,12 @@ var CONSTANT = function(){
 		lang		: "Language",
 		id 	    	: "Email",
 		pw			: "Password",
+		pwConfirm 	: "Confirm PW",
 		signin	 	: "Sign in",
 		signup		: "Sign up",
 		nick		: "Name",
 		message		: "Word, Sentence, anything.",
-		clickMessage: "If you <code>click</code>, you can enter a comment.",
+		clickMessage: "If you <code>click</code> a article, you can enter a comment.",
 		label1		: "RE:",
 		label2		: "",
 		label3		: "",
@@ -30,7 +31,7 @@ var CONSTANT = function(){
 	var message_ko = {
 		url1		: "./index.html?langFlag=ko",
 		url2		: "./sentence.html?langFlag=ko",
-		url3		: "",
+		url3		: "./talk.html?langFlag=ko",
 		url4		: "",
 		title		: "구름다리",
 		menu1		: "시작",
@@ -40,11 +41,12 @@ var CONSTANT = function(){
 		lang		: "나랏말",
 		id 	    	: "이메일주소",
 		pw			: "비밀번호",
+		pwConfirm 	: "비밀번호 확인",
 		signin	 	: "로그인",
 		signup		: "가입하기",
 		nick		: "이름",
 		message		: "단어, 문장, 어떤 것이라도.",
-		clickMessage: "<code>클릭</code>하면 댓글을 입력할 수 있습니다.",
+		clickMessage: "본문을 <code>클릭</code>하면 댓글을 입력할 수 있습니다.",
 		label1		: "댓글:",
 		label2		: "",
 		label3		: "",
@@ -73,7 +75,7 @@ function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    return results === null ? "en" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 function changeLang(){
@@ -105,9 +107,12 @@ function setLang(lang){
 
 	$(".inputEmail").html(CONSTANT.getValue("id", lang));
 	$(".inputPassword").html(CONSTANT.getValue("pw", lang));
+	$(".inputPasswordConfirm").html(CONSTANT.getValue("pwConfirm", lang));
 	
 	$("#inputEmail").attr("placeholder", CONSTANT.getValue("id", lang));
 	$("#inputPassword").attr("placeholder", CONSTANT.getValue("pw", lang));
+	$("#inputPasswordConfirm").attr("placeholder", CONSTANT.getValue("pw", lang));
+	
 
 	$("#loginBtn").val(CONSTANT.getValue("signin", lang));
 	$("#joinBtn").val(CONSTANT.getValue("signup", lang));

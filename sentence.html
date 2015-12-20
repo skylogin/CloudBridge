@@ -30,40 +30,18 @@
 	<div class="blog-header">
 		<div class="container">
 			<div class="list-group">
-				<ol>
+				<ul>
 					<li class="list-group-item">
 						<div class="leftContent">
 							<p class="list-group-item-heading">
 								가나달
-								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+								
 							</p>
 						</div>
 						<div class="rightContent">
 							<span class="glyphicon glyphicon-user">피카딜구</span>
 							/
-							<span class="glyphicon glyphicon-thumbs-up">32</span>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="leftContent">
-							<p class="list-group-item-heading">
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
-							</p>
-						</div>
-						<div class="rightContent">
-							<span class="glyphicon glyphicon-user">피카딜3번출구</span>
+							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
 							/
 							<span class="glyphicon glyphicon-thumbs-up">32</span>
 						</div>
@@ -71,15 +49,45 @@
 					<li class="list-group-item">
 						<div class="leftContent">
 							<p class="list-group-item-heading">
-								본문클릭하면 댓글달기<br/>
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								어쩌고 저쩌고 오늘 하루 등등등
+								dfghdfgdfgdfghgsdfsdfsdfgsdfsdfgsdfg
+								
+							</p>
+						</div>
+						<div class="rightContent">
+							<span class="glyphicon glyphicon-user">피카딜3번출구</span>
+							/
+							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
+							/
+							<span class="glyphicon glyphicon-thumbs-up">32</span>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="leftContent">
+							<p class="list-group-item-heading">
+								본문클릭하면 댓글달기 -- 클릭한거 알 수 있도록 색깔 칠하도록 변경, 그리고 해당 글번호는 form hidden에 넣어놓고 대기<br/>
 								댓글은 단 순서대로 달림 (디비 insert 순)<br />
 								우측 사용자쪽 누르면 좋아요 올라감<br/>
-								로컬스토리지 이용해서 좋아요 누른거는 못클릭하게 변경
-								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+								로컬스토리지 이용해서 좋아요 누른거는 못클릭하게 변경<br/>
+
+								
 							</p>
 						</div>
 						<div class="rightContent">
 							<span class="glyphicon glyphicon-user content-nick">피카딜리서커스역3번출구</span>
+							/
+							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
 							/
 							<span class="glyphicon glyphicon-thumbs-up content-thumbup">14</span>
 						</div>
@@ -100,17 +108,19 @@
 								어쩌고 저쩌고 오늘 하루 등등등
 								어쩌고 저쩌고 오늘 하루 등등등
 								어쩌고 저쩌고 오늘 하루 등등등
-								<span class="glyphicon glyphicon-calendar">2015-12-12 09:32</span>
+								
 							</p>
 						</div>
 						<div class="rightContent">
 							<span class="glyphicon glyphicon-user">피카</span>
 							/
+							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
+							/
 							<span class="glyphicon glyphicon-thumbs-up">5</span>
 						</div>
 					</li>
 
-				</ol>
+				</ul>
 			
 			</div>
 		</div>
@@ -153,6 +163,7 @@
 
 	$(document).ready(function(){
 		setLang(langFlag);
+		$('[data-toggle="tooltip"]').tooltip();
 	});
 </script>
 </body>

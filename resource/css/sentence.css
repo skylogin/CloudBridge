@@ -21,9 +21,13 @@
 	width:100%;
 	float:left;
 }
-.list-group ol{
+.list-group ul{
 	text-align: left;
 	font-size:12px;
+}
+
+.list-group-item-heading{
+	cursor: pointer;
 }
 
 .leftContent{

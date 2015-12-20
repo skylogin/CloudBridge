@@ -45,10 +45,16 @@
 						<input type="password" class="form-control inputPassword" id="inputPassword" placeholder="">
 					</div>
 				</div>
+				<div class="form-group passwordConfirm">
+					<label for="inputPassword" class="col-sm-5 control-label inputPasswordConfirm"></label>
+					<div class="col-sm-2">
+						<input type="password" class="form-control inputPassword" id="inputPasswordConfirm" placeholder="">
+					</div>
+				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-3">
 						<input type="button" id="loginBtn" class="btn btn-default" />
-						<input type="button" id="joinBtn" class="btn btn-primary" />
+						<input type="button" id="joinBtn" class="btn btn-primary" onclick="openPasswordConfirmDiv();"/>
 					</div>
 						
 				</div>
@@ -85,12 +91,32 @@
 <script src="resource/js/constants.js"></script>
 <script type="text/javascript">
 	var langFlag = getParameterByName("langFlag");
+	var joinFlag = "N";
 
 	$(document).ready(function(){
-		setLang(langFlag);
+		init();
+		
+	});
+
+	function init(){
 		$(".blog-footer").hide();
 		$(".blog-notice").hide();
-	});
+		$(".passwordConfirm").hide();
+
+		setLang(langFlag);
+	}
+
+	function openPasswordConfirmDiv(){
+		if(joinFlag == "N"){
+			$(".passwordConfirm").show();
+			joinFlag = "Y";
+		} else if(joinFlag == "Y"){
+			//패스워드 같은지 확인
+			//form값 action으로 넘기기
+			alert("가입됨");
+		}
+		
+	}
 </script>
 </body>
 </html>
