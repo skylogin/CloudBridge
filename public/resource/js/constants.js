@@ -1,8 +1,8 @@
 var CONSTANT = function(){
 	var message = {
-		url1		: "./index.html?langFlag=en",
-		url2		: "./sentence.html?langFlag=en",
-		url3		: "./talk.html?langFlag=en",
+		url1		: "/index?langFlag=en",
+		url2		: "/sentence?langFlag=en",
+		url3		: "/talk?langFlag=en",
 		url4		: "",
 		title		: "CloudBridge",
 		menu1		: "Start",
@@ -29,9 +29,9 @@ var CONSTANT = function(){
 	}
 
 	var message_ko = {
-		url1		: "./index.html?langFlag=ko",
-		url2		: "./sentence.html?langFlag=ko",
-		url3		: "./talk.html?langFlag=ko",
+		url1		: "/index?langFlag=ko",
+		url2		: "/sentence?langFlag=ko",
+		url3		: "/talk?langFlag=ko",
 		url4		: "",
 		title		: "구름다리",
 		menu1		: "시작",

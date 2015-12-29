@@ -1,21 +1,12 @@
 {
-  "name": "cloudbridge",
-  "version": "1.0.0",
-  "description": "say CloudBridge",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Hello World\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skylogin/CloudBridge.git"
-  },
-  "author": "CJ",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/skylogin/CloudBridge/issues"
-  },
-  "homepage": "https://github.com/skylogin/CloudBridge#readme"
+  "name": "cloudBridge",
+  "version": "0.0.1",
+  "dependencies": {
+    "express" : "*",
+    "ejs" : "*",
+    "socket.io" : "*",
+    "body-parser" : "*",
+    "socket.io-redis" : "*",
+    "async" : "*"
+  }
 }

@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="/resource/css/reset.css" rel="stylesheet" media="screen">
+	<link href="/resource/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+	<link href="/resource/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="/resource/css/docs.min.css" rel="stylesheet" media="screen">
+	<link href="/resource/css/header.css" rel="stylesheet" media="screen">
+	<link href="/resource/css/talk.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div id="wrap">
+
+	<!-- 상단 메뉴 -->
+	<div class="blog-masthead">
+		<div class="container">
+			<nav class="blog-nav">
+				<a id="menu1" class="blog-nav-item" href=""></a>
+				<a id="menu2" class="blog-nav-item" href=""></a>
+				<a id="menu3" class="blog-nav-item active" href=""></a>
+				<a id="menu4" class="blog-nav-item" href=""></a>
+				<a id="lang" class="blog-nav-item" href="#" onclick="changeLang();"></a>
+			</nav>
+		</div>
+	</div>
+	
+	<!-- 메인 -->
+	<div class="blog-header">
+		<div class="container">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<code>닉네임1</code> 가나다라마바ㅣ바ㅣㅈㄱ
+					<code>후후</code> 쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등ㄱ
+					<code>3</code>ABVCDEFGILDLEKJFLKSJEFLKJSELLSKFLK lskdlklkeflksladalk lasekflkflkjasdflkjasdf
+					<code>가나다라마바사</code>쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등
+				</li>
+				<li class="list-group-item">
+					<span class="userName">
+						<code>대한독립만세</code>
+					</span>
+					<span class="userChatContent">
+						동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 
+					</span>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+
+
+	<!-- 하단 -->
+	<div class="blog-footer">
+		
+		<div class="container">
+			<div class="cloudName">
+				<input type="text" id="userName" class="form-control input-sm" placeholder="" required onkeyup="changeFocus()" />
+			</div>
+			<div class="cloudContent">
+				<input type="text" id="userContent" class="form-control input-sm" placeholder="" required onkeyup="sendMsg()" />
+			</div>
+			</ul>
+		</div>
+	</div>
+
+
+
+</div>
+<script src="/resource/js/jquery.min.js"></script> 
+<script src="/resource/js/socket.io.js"></script>
+<script src="/resource/js/bootstrap.min.js"></script>
+<script src="/resource/js/constants.js"></script>
+<script src="http://jsgetip.appspot.com"></script>
+
+<script type="text/javascript">
+	var langFlag = getParameterByName("langFlag");
+	var uIp = ip();
+
+	$(document).ready(function(){
+		setLang(langFlag);
+
+		//socket.io 생성
+		socket = io.connect("http://localhost:5554", {
+			"force new connection" : true
+		});
+
+		socket.emit("USER_ENTER", {
+			uIp: uIp
+		});
+/*
+		socket.on("USER_ADD", function(data){
+			$("#chatParticipant li").remove();
+
+			for(var i=0; i<data.newUserNick.length; i++){
+				var li = $("<li></li>").text(data.newUserNick[i]);
+				$("#chatParticipant").append(li);
+			}
+
+			var originMsg = $("#comment").text();
+			var newUserEnterMsg = "Enter a New User: " + data.newUser;
+			$("#comment").text(originMsg + "\n" + newUserEnterMsg);
+
+			var textarea = document.getElementById("comment");
+			textarea.scrollTop = textarea.scrollHeight - textarea.clientHeight;
+		});
+*/
+		socket.on("MSG_ADD", function(data){
+			var newUserName = data.newNick;
+			var newUserMsg = data.newMsg;
+
+
+			var newContent = newUserName + " " + newUserMsg;
+			var code = $("<code></code>").text(newUserName);
+
+			var li = $("<li class='list-group-item'></li>").text(code);
+			$(".list-group").append(li);
+
+			/* 스크롤 */
+			//var bodyarea = document.getElementById("body");
+			//bodyarea.scrollTop = bodyarea.scrollHeight - bodyarea.clientHeight;
+		});
+	});
+
+	function sendMsg(flag) {
+		if(event.keyCode == 13 || flag == true){
+			var userName = $("#userName").val();
+			var userContent = $("#userContent").val();
+
+			if(userName == '' || userName == null || userContent == '' || userContent == null){ return false; }
+
+			$("#userContent").val("");
+
+			socket.emit("CHAT_MSG", {
+				nick: userName,
+				msg: userContent
+			});
+		}
+	}
+
+	function changeFocus(){
+		if(event.keyCode == 13){
+			$("#userContent").focus();
+			sendMsg(true);
+		}
+	}
+</script>
+</body>
+</html>
