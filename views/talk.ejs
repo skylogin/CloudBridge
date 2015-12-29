@@ -56,10 +56,10 @@
 		
 		<div class="container">
 			<div class="cloudName">
-				<input type="text" id="userName" class="form-control input-sm" placeholder="" required onkeyup="changeFocus()" />
+				<input type="text" id="userName" class="form-control input-sm" placeholder="" onkeyup="changeFocus()" required />
 			</div>
 			<div class="cloudContent">
-				<input type="text" id="userContent" class="form-control input-sm" placeholder="" required onkeyup="sendMsg()" />
+				<input type="text" id="userContent" class="form-control input-sm" placeholder="" onkeyup="sendMsg()" /required>
 			</div>
 			</ul>
 		</div>
@@ -89,7 +89,13 @@
 		socket.emit("USER_ENTER", {
 			uIp: uIp
 		});
+
 /*
+	Todo: 누군가가 연결을 끊으면 서버로 메시지 보내서 누군가가 떠났다고 노티해주면 재밌을 듯
+*/
+
+/*
+		Todo: 누군가가 접속했다는 것을 알게되면 해당부분을 통해서 간단하게 노티해줄 것
 		socket.on("USER_ADD", function(data){
 			$("#chatParticipant li").remove();
 
@@ -110,7 +116,7 @@
 			var newUserName = data.newNick;
 			var newUserMsg = data.newMsg;
 
-
+			//Todo: 코드 등의 태그가 안먹히는 관계로 생성 후 텍스트를 넣어줘야 하는데 해당부분 찾아서 수정할 것
 			var newContent = newUserName + " " + newUserMsg;
 			var code = $("<code></code>").text(newUserName);
 
@@ -118,6 +124,7 @@
 			$(".list-group").append(li);
 
 			/* 스크롤 */
+			//Todo: 바디의 스크롤 크기 계산법 찾아서 스크롤 생길때마다 가장 하단으로 스크롤 내려줘야함.
 			//var bodyarea = document.getElementById("body");
 			//bodyarea.scrollTop = bodyarea.scrollHeight - bodyarea.clientHeight;
 		});
