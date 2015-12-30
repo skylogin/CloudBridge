@@ -31,9 +31,10 @@ if(cluster.isMaster){
 		wss.connect(socket, io);
 	});
 
-	
-	server.listen(5554, "localhost", function () {
-		console.log("Server Start... http://localhost:5554");
+
+	var port = process.env.PORT || 5000;
+	server.listen(port, function () {
+		console.log("Server Start...listening on " + port);
 	});
 
 }
