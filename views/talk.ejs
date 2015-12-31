@@ -50,10 +50,12 @@
 		setActiveMenu("3");
 
 		var serverURL = location.origin;
-		serverURL += ":5000";
+		//serverURL += ":5000";
 
 		//socket.io 생성
-		socket = io.connect(serverURL);
+		socket = io.connect(serverURL, {
+			"force new connection" : true
+		});
 
 		
 		
