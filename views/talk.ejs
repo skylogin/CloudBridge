@@ -61,10 +61,8 @@
 
 */		
 		//socket.io 생성
-		//socket = io.connect({path:'/socket.io/socket.io'});
+		socket = io.connect({path:'/socket.io'});
 		
-
-		socket = io();
 		
 
 		socket.emit("USER_ENTER", {
