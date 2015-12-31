@@ -31,8 +31,6 @@
 
 
 <script src="/resource/js/jquery.min.js"></script> 
-<script src="/resource/js/socket.io.js"></script>
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/resource/js/bootstrap.min.js"></script>
 <script src="/resource/js/constants.js"></script>
@@ -50,8 +48,10 @@
 		setLang(langFlag);
 		setActiveMenu("3");
 
-		var serverURL = 'http://' + location.host;
-
+		var serverURL = location.origin;
+		alert(serverURL);
+		var serverURLreplace = location.origin.replace(/^http/, 'ws');
+		alert(serverURLreplace);
 		//socket.io 생성
 		var socket = io.connect(serverURL, {
 			"force new connection" : true
