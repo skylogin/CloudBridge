@@ -21,5 +21,9 @@ router.get("/test", function(req, res){
 	res.render("test");
 })
 
+router.get("/socket.io", function(req, res){
+	res.render("socket.io");
+});
+
 
 module.exports = router;
