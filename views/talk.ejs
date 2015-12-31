@@ -49,11 +49,15 @@
 		setLang(langFlag);
 		setActiveMenu("3");
 
+/*
 		var serverURL = location.origin;
 		serverURL += ":5000";
 
 		//socket.io 생성
-		socket = io();
+		socket = io.connect({path:'/socket.io/socket.io'});
+*/
+		
+		//socket.io 생성
 		socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
