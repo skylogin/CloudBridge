@@ -49,11 +49,12 @@
 		setActiveMenu("3");
 
 		var serverURL = location.origin;
+		serverURL += ":5000";
 		alert(serverURL);
 		var serverURLreplace = location.origin.replace(/^http/, 'ws');
 		alert(serverURLreplace);
 		//socket.io 생성
-		var socket = io.connect(serverURLreplace, {
+		var socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
 
