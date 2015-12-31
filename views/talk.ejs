@@ -82,7 +82,7 @@
 		setLang(langFlag);
 
 		//socket.io 생성
-		socket = io.connect("http://localhost:5554", {
+		socket = io.connect("https://cloudbridge.herokuapp.com:5000", {
 			"force new connection" : true
 		});
 
