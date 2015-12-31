@@ -31,7 +31,7 @@
 
 
 <script src="/resource/js/jquery.min.js"></script> 
-<script src="/socket.io/socket.io.js"></script>
+<script src="/resource/js/socket.io.js"></script> 
 <script src="/resource/js/bootstrap.min.js"></script>
 <script src="/resource/js/constants.js"></script>
 <script src="http://jsgetip.appspot.com"></script>
@@ -53,6 +53,7 @@
 		alert(serverURL);
 		var serverURLreplace = location.origin.replace(/^http/, 'ws');
 		alert(serverURLreplace);
+		serverURLreplce += ":5000";
 		//socket.io 생성
 		var socket = io.connect(serverURL, {
 			"force new connection" : true
