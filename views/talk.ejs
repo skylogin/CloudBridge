@@ -32,11 +32,13 @@
 
 <script src="/resource/js/jquery.min.js"></script> 
 <script src="/resource/js/socket.io.js"></script> 
+<script src="/socket.io/socket.io.js"></script>
 <script src="/resource/js/bootstrap.min.js"></script>
 <script src="/resource/js/constants.js"></script>
 <script src="http://jsgetip.appspot.com"></script>
 
 <script type="text/javascript">
+	var socket = io();
 	var langFlag = getParameterByName("langFlag");
 	var uIp = ip();
 
@@ -52,6 +54,7 @@
 		serverURL += ":5000";
 
 		//socket.io 생성
+
 		socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
