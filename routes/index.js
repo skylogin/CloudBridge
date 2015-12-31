@@ -17,7 +17,7 @@ router.get("/talk", function(req, res){
 	res.render("talk");
 });
 
-route.get("/test", function(req, res){
+router.get("/test", function(req, res){
 	res.render("test");
 })
 
