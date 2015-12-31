@@ -1,30 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-	<link href="/resource/css/reset.css" rel="stylesheet" media="screen">
-	<link href="/resource/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-	<link href="/resource/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="/resource/css/docs.min.css" rel="stylesheet" media="screen">
-	<link href="/resource/css/header.css" rel="stylesheet" media="screen">
-	<link href="/resource/css/talk.css" rel="stylesheet" media="screen">
-</head>
-<body>
-<div id="wrap">
-
-	<!-- 상단 메뉴 -->
-	<div class="blog-masthead">
-		<div class="container">
-			<nav class="blog-nav">
-				<a id="menu1" class="blog-nav-item" href=""></a>
-				<a id="menu2" class="blog-nav-item" href=""></a>
-				<a id="menu3" class="blog-nav-item active" href=""></a>
-				<a id="menu4" class="blog-nav-item" href=""></a>
-				<a id="lang" class="blog-nav-item" href="#" onclick="changeLang();"></a>
-			</nav>
-		</div>
-	</div>
+<!-- 상단 메뉴 -->
+<% include header.ejs%>
 	
 	<!-- 메인 -->
 	<div class="blog-header">
@@ -50,24 +25,11 @@
 	</div>
 
 
-
-	<!-- 하단 -->
-	<div class="blog-footer">
-		
-		<div class="container">
-			<div class="cloudName">
-				<input type="text" id="userName" class="form-control input-sm" placeholder="" onkeyup="changeFocus()" required />
-			</div>
-			<div class="cloudContent">
-				<input type="text" id="userContent" class="form-control input-sm" placeholder="" onkeyup="sendMsg()" /required>
-			</div>
-			</ul>
-		</div>
-	</div>
+<!-- 하단 -->
+<% include footer.ejs%>
 
 
 
-</div>
 <script src="/resource/js/jquery.min.js"></script> 
 <script src="/resource/js/socket.io.js"></script>
 <script src="/resource/js/bootstrap.min.js"></script>
@@ -78,11 +40,18 @@
 	var langFlag = getParameterByName("langFlag");
 	var uIp = ip();
 
+	function setActiveMenu(number){
+		$("#menu"+number).addClass("active");
+	}
+
 	$(document).ready(function(){
 		setLang(langFlag);
+		setActiveMenu("3");
 
+		var serverURL = location.origin;
+		alert(serverURL);
 		//socket.io 생성
-		socket = io.connect("https://cloudbridge.herokuapp.com:5000", {
+		socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
 

@@ -17,13 +17,6 @@ router.get("/talk", function(req, res){
 	res.render("talk");
 });
 
-router.post("/chat", function(req, res){
-	var nick = req.body.uNickname;
-	res.render("chat", {
-		uNick : nick
-	});
-});
-
 
 
 module.exports = router;
