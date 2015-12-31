@@ -17,6 +17,9 @@ router.get("/talk", function(req, res){
 	res.render("talk");
 });
 
+route.get("/test", function(req, res){
+	res.render("test");
+})
 
 
 module.exports = router;
