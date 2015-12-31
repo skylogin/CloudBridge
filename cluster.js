@@ -16,7 +16,7 @@ if(cluster.isMaster){
 			res.end();
 
 		},5000);
-	}).listen(5000, "localhost", function(){
-		console.log("Server start... http://localhost:5000");
+	}).listen(5005, function(){
+		console.log("Server start... port:5005");
 	});
 }
