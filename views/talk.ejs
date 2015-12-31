@@ -53,7 +53,7 @@
 		var serverURLreplace = location.origin.replace(/^http/, 'ws');
 		alert(serverURLreplace);
 		//socket.io 생성
-		var socket = io.connect(serverURL, {
+		var socket = io.connect(serverURLreplace, {
 			"force new connection" : true
 		});
 
