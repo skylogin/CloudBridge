@@ -48,10 +48,10 @@
 		setLang(langFlag);
 		setActiveMenu("3");
 
-		var serverURL = location.origin;
-		alert(serverURL);
+		var serverURL = 'http://' + location.host;
+
 		//socket.io 생성
-		socket = io.connect(serverURL, {
+		var socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
 
