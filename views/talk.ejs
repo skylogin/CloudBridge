@@ -38,7 +38,6 @@
 <script src="http://jsgetip.appspot.com"></script>
 
 <script type="text/javascript">
-	var socket = io();
 	var langFlag = getParameterByName("langFlag");
 	var uIp = ip();
 
@@ -54,7 +53,7 @@
 		serverURL += ":5000";
 
 		//socket.io 생성
-
+		socket = io();
 		socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
