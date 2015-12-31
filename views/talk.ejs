@@ -54,13 +54,16 @@
 		serverURL += ":5000";
 
 		//socket.io 생성
-		socket = io.connect({path:'/socket.io/socket.io'});
-*/
-		
-		//socket.io 생성
 		socket = io.connect(serverURL, {
 			"force new connection" : true
 		});
+
+*/
+		
+		//socket.io 생성
+		socket = io.connect({path:'/socket.io/socket.io'});
+
+		
 
 		socket.emit("USER_ENTER", {
 			uIp: uIp
