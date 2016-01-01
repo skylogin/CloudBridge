@@ -52,8 +52,15 @@
 		var serverURL = location.origin;
 		//serverURL += ":5000";
 
+		alert(serverURL);
+		
+		var serverURL2 = location.host;
+		serverURL2 += "/socket.io";
+
+		alert(serverURL2);
+
 		//socket.io 생성
-		socket = io.connect(serverURL, {
+		socket = io.connect(serverURL2, {
 			"force new connection" : true
 		});
 
