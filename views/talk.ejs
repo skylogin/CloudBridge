@@ -52,12 +52,13 @@
 		var serverURL = location.origin;
 		//serverURL += ":5000";
 
-		alert(serverURL);
 		
 		var serverURL2 = location.host;
-		serverURL2 += "/socket.io";
+		serverURL2 += ":5000";
 
-		alert(serverURL2);
+		var port = location.port;
+		alert(port);
+
 
 		//socket.io 생성
 		socket = io.connect(serverURL2, {
