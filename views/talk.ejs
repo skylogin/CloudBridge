@@ -59,6 +59,7 @@
 		socket = io.connect(host, {
 			port: PORT,
 			//secure: true,
+			"transports": ["websocket", "polling"],
 			"force new connection": true
 		});
 
