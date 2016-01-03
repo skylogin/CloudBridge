@@ -96,10 +96,10 @@
 			var newUserMsg = data.newMsg;
 
 			//Todo: 코드 등의 태그가 안먹히는 관계로 생성 후 텍스트를 넣어줘야 하는데 해당부분 찾아서 수정할 것
-			var newContent = newUserName + " " + newUserMsg;
+			var newContent = newUserName + "> " + newUserMsg;
 			var code = $("<code></code>").text(newUserName);
 
-			var li = $("<li class='list-group-item'></li>").text(code);
+			var li = $("<li class='list-group-item'></li>").text(newContent);
 			$(".list-group").append(li);
 
 			/* 스크롤 */
