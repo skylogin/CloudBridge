@@ -57,7 +57,9 @@
 
 		//socket.io 생성
 		socket = io.connect(host, {
-			port: PORT
+			port: PORT,
+			"transports": ["websocket", "polling","xhr-polling"],
+			"force new connection": true
 		});
 
 		
