@@ -38,8 +38,7 @@ if(cluster.isMaster){
 	var io = require("socket.io").listen(server);
 
 	io.set("transports", ["websocket", 'polling']); 
-	//io.set("transports", ["xhr-polling"]); 
-	io.set("polling duration", 20);
+	//io.set("transports", ["xhr-polling"]);
 
 	io.on("connection", function (socket) {
 		wss.connect(socket, io);
