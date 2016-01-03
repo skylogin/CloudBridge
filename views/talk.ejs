@@ -63,6 +63,7 @@
 		//socket.io 생성
 		socket = io.connect(host, {
 			port: PORT,
+			secure: true,
 			"force new connection": true
 		});
 
