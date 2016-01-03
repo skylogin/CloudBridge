@@ -12,13 +12,10 @@ if(cluster.isMaster){
 	var bodyParser = require("body-parser");
 	var wss = require("./lib/wss");
 	var redis = require("socket.io-redis");
-	
-	var app = express();
-	var server = http.createServer(app);
-	var io = require("socket.io").listen(server);
-	
-
 	var routes = require("./routes");
+
+
+	var app = express();
 
 	app.set("views", path.join(__dirname, "views"));
 	app.set("view engine", "ejs");
@@ -27,14 +24,24 @@ if(cluster.isMaster){
 	app.use("/", routes);
 	app.use(express.static(path.join(__dirname, "public")));
 
+
+	var server = http.createServer(app);
+
+	var port = process.env.PORT || 5000;
+	server.listen(port, function () {
+		console.log("Server Start...listening on %d", port);
+	});
+
+
+
+
+	var io = require("socket.io").listen(server);
+
 	io.on("connection", function (socket) {
 		wss.connect(socket, io);
 	});
 
 
-	var port = process.env.PORT || 5000;
-	server.listen(port, function () {
-		console.log("Server Start...listening on " + port);
-	});
+
 
 }
