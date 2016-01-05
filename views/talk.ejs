@@ -87,6 +87,7 @@
 	function modifyUserCount(count){
 		$("#remainUser").html(count);
 	}
+
 	/* 메시지를 붙여줌 */
 	function addMessage(data, count){
 		var newUserName = data.newNick;
@@ -101,9 +102,9 @@
 			var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
 		} else{
 			if(typeof newUserName != "undefined"){
-				var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
+				var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
 			} else{
-				var li = $("<code>" + CONSTANT.getValue("chatMessage", langFlag) +"</code><br/>");
+				var li = $("<code>" + CONSTANT.getValue("chatMessage", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
 			}
 		}
 
