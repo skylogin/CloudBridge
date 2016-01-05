@@ -6,14 +6,29 @@
 		<div class="container">
 			<ul class="list-group">
 				<li class='list-group-item chatPanel'></li>
-				<!-- 말풍선 뷰로 -->
+				<!-- To-do: 말풍선 뷰로 변경 + 날짜/시간을 카톡처럼 좀 작게 변경 -->
 			</ul>
 		</div>
 	</div>
+	
+	<div class="container">
+		<code id="remainUser"></code>
+		<span id="chatStatus"></span>
+	</div>
 
-
-<!-- 하단 -->
-<% include footer.ejs%>
+	<!-- 하단 -->
+	<div class="blog-footer">
+		<div class="container">
+			<div class="cloudName">
+				<input type="text" id="userName" class="form-control input-sm" placeholder="" onkeyup="changeFocus()" maxlength="10" required />
+			</div>
+			<div class="cloudContent">
+				<input type="text" id="userContent" class="form-control input-sm" placeholder="" onkeyup="sendMsg()"  maxlength="500"required />
+			</div>
+			</ul>
+		</div>
+	</div>
+</div>
 
 
 
@@ -40,7 +55,6 @@
 		setActiveMenu("3");
 
 		var host = location.origin;
-		//var host = location.origin.replace(/^http/, 'ws');
 		var PORT = "5000";
 
 		//socket.io 생성
@@ -55,14 +69,24 @@
 		});
 
 		socket.on("USER_ADD", function(data){
+			modifyUserCount(data.newUserCount);
 			addMessage(data, 0);
 		});
 
 		socket.on("MSG_ADD", function(data){
 			addMessage(data, 1);
 		});
+
+		socket.on("DISCONNECTED", function(data) {
+			modifyUserCount(data.newUserCount);
+        });
+
 	});
 
+
+	function modifyUserCount(count){
+		$("#remainUser").html(count);
+	}
 	/* 메시지를 붙여줌 */
 	function addMessage(data, count){
 		var newUserName = data.newNick;
@@ -74,10 +98,10 @@
 
 		if(printTimeCount > 5){
 			printTimeCount = 0;
-			var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "..." + newUserTime + "<br/>");
+			var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
 		} else{
 			if(typeof newUserName != "undefined"){
-				var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
+				var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
 			} else{
 				var li = $("<code>" + CONSTANT.getValue("chatMessage", langFlag) +"</code><br/>");
 			}
