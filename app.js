@@ -1,11 +1,14 @@
+
+
+/* 클러스터 부분 주석처리
 var cluster = require("cluster");
 var numOfCore = require("os").cpus().length;
-
 if(cluster.isMaster){
 	for(var i=0; i<numOfCore; i++){
 		cluster.fork();
 	}
 } else{
+*/
 	var http = require("http");
 	var express = require("express");
 	var path = require("path");
