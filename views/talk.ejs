@@ -6,6 +6,7 @@
 		<div class="container">
 			<ul class="list-group">
 				<li class='list-group-item chatPanel'></li>
+				<!-- 말풍선 뷰로 -->
 			</ul>
 		</div>
 	</div>
@@ -92,6 +93,9 @@
 
 
 	function sendMsg(flag) {
+		if($("#userName").val() == ""){
+			$("#userName").focus();
+		}
 		if(event.keyCode == 13 || flag == true){
 			var userName = $("#userName").val();
 			var userContent = $("#userContent").val();
