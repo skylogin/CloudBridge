@@ -4,136 +4,145 @@
 	<!-- 메인 -->
 	<div class="blog-header">
 		<div class="container">
-			<div class="list-group">
-				<ul>
-					<li class="list-group-item">
-						<div class="leftContent">
-							<p class="list-group-item-heading">
-								가나달
-								
-							</p>
-						</div>
-						<div class="rightContent">
-							<span class="glyphicon glyphicon-user">피카딜구</span>
-							/
-							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
-							/
-							<span class="glyphicon glyphicon-thumbs-up">32</span>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="leftContent">
-							<p class="list-group-item-heading">
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								dfghdfgdfgdfghgsdfsdfsdfgsdfsdfgsdfg
-								
-							</p>
-						</div>
-						<div class="rightContent">
-							<span class="glyphicon glyphicon-user">피카딜3번출구</span>
-							/
-							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
-							/
-							<span class="glyphicon glyphicon-thumbs-up">32</span>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="leftContent">
-							<p class="list-group-item-heading">
-								본문클릭하면 댓글달기 -- 클릭한거 알 수 있도록 색깔 칠하도록 변경, 그리고 해당 글번호는 form hidden에 넣어놓고 대기<br/>
-								댓글은 단 순서대로 달림 (디비 insert 순)<br />
-								우측 사용자쪽 누르면 좋아요 올라감<br/>
-								로컬스토리지 이용해서 좋아요 누른거는 못클릭하게 변경<br/>
-
-								
-							</p>
-						</div>
-						<div class="rightContent">
-							<span class="glyphicon glyphicon-user content-nick">피카딜리서커스역3번출구</span>
-							/
-							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
-							/
-							<span class="glyphicon glyphicon-thumbs-up content-thumbup">14</span>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="leftContent">
-							<span class="label label-warning"> </span>
-							<p class="list-group-item-heading">
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								어쩌고 저쩌고 오늘 하루 등등등
-								
-							</p>
-						</div>
-						<div class="rightContent">
-							<span class="glyphicon glyphicon-user">피카</span>
-							/
-							<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-placement="top" title="2015-12-12">09:32</span>
-							/
-							<span class="glyphicon glyphicon-thumbs-up">5</span>
-						</div>
-					</li>
-
-				</ul>
-			
-			</div>
+			<ul class="list-group">
+				<li class='list-group-item chatPanel'></li>
+				<!-- To-do: 말풍선 뷰로 변경 + 날짜/시간을 카톡처럼 좀 작게 변경 -->
+			</ul>
 		</div>
 	</div>
+	
+	<div class="container">
+		<code id="remainUser"></code>
+		<span id="chatStatus"></span>
+	</div>
 
-
-
-
-	<!-- 공지 -->
-	<div class="blog-notice">
+	<!-- 하단 -->
+	<div class="blog-footer">
 		<div class="container">
-			<span class="glyphicon glyphicon-bullhorn noticeMessage"></span> 
-			<span id="noticeMessage" class="noticeMessage"></span>
-			<span class="clickMessage"></span>
+			<div class="cloudName">
+				<input type="text" id="userName" class="form-control input-sm" placeholder="" onkeyup="changeFocus()" maxlength="10" required />
+			</div>
+			<div class="cloudContent">
+				<input type="text" id="userContent" class="form-control input-sm" placeholder="" onkeyup="sendMsg()"  maxlength="500"required />
+			</div>
+			</ul>
 		</div>
 	</div>
-
-
-
-<!-- 하단 -->
-<% include footer.ejs%>
-
 </div>
+
+
+
+
+<script src="/resource/js/socket.io.js"></script> 
+<script src="http://cloudbridge.herokuapp.com/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script> 
 <script src="/resource/js/jquery.min.js"></script> 
 <script src="/resource/js/bootstrap.min.js"></script>
 <script src="/resource/js/constants.js"></script>
+<script src="http://jsgetip.appspot.com"></script>
+
 <script type="text/javascript">
 	var langFlag = getParameterByName("langFlag");
+	var uIp = ip();
+	var printTimeCount = 0;
 
 	function setActiveMenu(number){
 		$("#menu"+number).addClass("active");
 	}
-	
+
 	$(document).ready(function(){
 		setLang(langFlag);
-		setActiveMenu("2");
-		$('[data-toggle="tooltip"]').tooltip();
+		setActiveMenu("3");
+
+		var host = location.origin;
+		var PORT = "5000";
+
+		//socket.io 생성
+		socket = io.connect(host, {
+			port: PORT,
+			"transports": ["websocket", "polling","xhr-polling"],
+			"force new connection": true
+		});
+
+		socket.emit("USER_ENTER", {
+			uIp: uIp
+		});
+
+		socket.on("USER_ADD", function(data){
+			modifyUserCount(data.newUserCount);
+			addMessage(data, 0);
+		});
+
+		socket.on("MSG_ADD", function(data){
+			addMessage(data, 1);
+		});
+
+		socket.on("DISCONNECTED", function(data) {
+			modifyUserCount(data.newUserCount);
+        });
+
 	});
+
+
+	function modifyUserCount(count){
+		$("#remainUser").html(count);
+	}
+
+	/* 메시지를 붙여줌 */
+	function addMessage(data, count){
+		var newUserName = data.newNick;
+		var newUserMsg = data.newMsg;
+		var newUserTime = data.newTime;
+		printTimeCount += count;
+
+		var whiteSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+		if(printTimeCount > 5){
+			printTimeCount = 0;
+			var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
+		} else{
+			if(typeof newUserName != "undefined"){
+				var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
+			} else{
+				var li = $("<code>" + CONSTANT.getValue("chatMessage", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
+			}
+		}
+
+		
+		$(".list-group-item").append(li);
+
+		/* 스크롤 */
+		$(".list-group-item").scrollTop($(".list-group-item")[0].scrollHeight);
+	}
+
+
+
+	function sendMsg(flag) {
+		if($("#userName").val() == ""){
+			$("#userName").focus();
+		}
+		if(event.keyCode == 13 || flag == true){
+			var userName = $("#userName").val();
+			var userContent = $("#userContent").val();
+
+			if(userName == '' || userName == null || userContent == '' || userContent == null){ return false; }
+
+			$("#userContent").val("");
+
+			socket.emit("CHAT_MSG", {
+				nick: userName,
+				msg: userContent,
+				uIP: uIp
+			});
+		}
+	}
+
+	function changeFocus(){
+		if(event.keyCode == 13){
+			$("#userContent").focus();
+			sendMsg(true);
+		}
+	}
 </script>
 </body>
 </html>
