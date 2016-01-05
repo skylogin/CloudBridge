@@ -5,21 +5,7 @@
 	<div class="blog-header">
 		<div class="container">
 			<ul class="list-group">
-				<li class="list-group-item">
-					<code>닉네임1</code> 가나다라마바ㅣ바ㅣㅈㄱ
-					<code>후후</code> 쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등ㄱ
-					<code>3</code>ABVCDEFGILDLEKJFLKSJEFLKJSELLSKFLK lskdlklkeflksladalk lasekflkflkjasdflkjasdf
-					<code>가나다라마바사</code>쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등쩌고 저쩌고 오늘 하루 등등등
-				</li>
-				<li class="list-group-item">
-					<span class="userName">
-						<code>대한독립만세</code>
-					</span>
-					<span class="userChatContent">
-						동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 
-					</span>
-				</li>
-
+				<li class='list-group-item'></li>
 			</ul>
 		</div>
 	</div>
@@ -42,6 +28,7 @@
 <script type="text/javascript">
 	var langFlag = getParameterByName("langFlag");
 	var uIp = ip();
+	var printTimeCount = 0;
 
 	function setActiveMenu(number){
 		$("#menu"+number).addClass("active");
@@ -62,49 +49,47 @@
 			"force new connection": true
 		});
 
-		
-
 		socket.emit("USER_ENTER", {
 			uIp: uIp
 		});
 
-/*
-	Todo: 누군가가 연결을 끊으면 서버로 메시지 보내서 누군가가 떠났다고 노티해주면 재밌을 듯
-*/
-
-/*
-		Todo: 누군가가 접속했다는 것을 알게되면 해당부분을 통해서 간단하게 노티해줄 것
 		socket.on("USER_ADD", function(data){
-			$("#chatParticipant li").remove();
-
-			for(var i=0; i<data.newUserNick.length; i++){
-				var li = $("<li></li>").text(data.newUserNick[i]);
-				$("#chatParticipant").append(li);
-			}
-
-			var originMsg = $("#comment").text();
-			var newUserEnterMsg = "Enter a New User: " + data.newUser;
-			$("#comment").text(originMsg + "\n" + newUserEnterMsg);
-
-			var textarea = document.getElementById("comment");
-			textarea.scrollTop = textarea.scrollHeight - textarea.clientHeight;
+			addMessage(data, 0);
 		});
-*/
+
 		socket.on("MSG_ADD", function(data){
-			var newUserName = data.newNick;
-			var newUserMsg = data.newMsg;
-
-			//Todo: 코드 등의 태그가 안먹히는 관계로 생성 후 텍스트를 넣어줘야 하는데 해당부분 찾아서 수정할 것
-			var li = $("<li class='list-group-item'><code>" + newUserName + "</code> " + newUserMsg + "</li>");
-
-			$(".list-group").append(li);
-
-			/* 스크롤 */
-			//Todo: 바디의 스크롤 크기 계산법 찾아서 스크롤 생길때마다 가장 하단으로 스크롤 내려줘야함.
-			//var bodyarea = document.getElementById("body");
-			//bodyarea.scrollTop = bodyarea.scrollHeight - bodyarea.clientHeight;
+			addMessage(data, 1);
 		});
 	});
+
+	/* 메시지를 붙여줌 */
+	function addMessage(data, count){
+		var newUserName = data.newNick;
+		var newUserMsg = data.newMsg;
+		var newUserTime = data.newTime;
+		printTimeCount += count;
+
+		var whiteSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+		if(printTimeCount > 5){
+			printTimeCount = 0;
+			var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "..." + newUserTime + "<br/>");
+		} else{
+			if(typeof newUserName != "undefined"){
+				var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
+			} else{
+				var li = $("<code>" + CONSTANT.getValue("chatMessage", langFlag) +"</code><br/>");
+			}
+		}
+
+		
+		$(".list-group-item").append(li);
+
+		/* 스크롤 */
+		$(".list-group-item").scrollTop($(".list-group-item")[0].scrollHeight);
+	}
+
+
 
 	function sendMsg(flag) {
 		if(event.keyCode == 13 || flag == true){
