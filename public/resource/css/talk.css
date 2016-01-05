@@ -1,42 +1,42 @@
 @charset "utf-8"
 
-/* ALL Device */ /* Mobile Device */
-.list-group-item{
-	text-align: left;
-	font-size:12px;
-}
-.chatPanel{
-	overflow: scroll;
-	height: 180px;
-}
-
-
-
-
 /* Tablet & Desktop Device */
 @media all and (min-width:768px){
-
+	.chatPanel{
+		text-align: left;
+		font-size:12px;
+		overflow: scroll;
+		height: 300px;
+	}
 }
 
 
 /* Tablet Device */
 @media all and (min-width:768px) and (max-width:1024px){
-
+	.chatPanel{
+		text-align: left;
+		font-size:12px;
+		overflow: scroll;
+		height: 300px;
+	}
 }
 
 
 /* Desktop Device */
 @media all and (min-width:1025px){
-	.list-group-item{
+	.chatPanel{
 		text-align: left;
 		font-size:12px;
-	}
-	.chatPanel{
 		overflow: scroll;
 		height: 500px;
 	}
 
 }
 
-
-
+/* ALL Device */ /* Mobile Device */
+.list-group-item{
+	text-align: left;
+	font-size: 12px;
+	overflow: scroll;
+	height: 180px;
+}
