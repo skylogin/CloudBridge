@@ -17,5 +17,9 @@ router.get("/sentence", function(req, res){
 	res.render("sentence");
 });
 
+router.get("/popup", function(req, res){
+	res.render("popup");
+});
+
 
 module.exports = router;

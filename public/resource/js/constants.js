@@ -25,7 +25,8 @@ var CONSTANT = function(){
 		label5		: "",
 		label6		: "",
 		notice1		: "Kind word can make others laugh even cry also.",
-		chatMessage : "Someone Join us.",
+		chatMessage1: "Someone Join us.",
+		chatMessage2: "Someone Left us.",
 		chatStatus	: " people in this room."
 
 	}
@@ -56,7 +57,8 @@ var CONSTANT = function(){
 		label5		: "",
 		label6		: "",
 		notice1		: "따뜻한 말 한마디는 남을 웃게도 울게도 만들 수 있습니다.",
-		chatMessage : "누군가가 대화방에 들어왔습니다.",
+		chatMessage1: "누군가가 대화방에 들어왔습니다.",
+		chatMessage2: "누군가가 대화방을 나갔습니다.",
 		chatStatus	: "명이 이방에 있습니다."
 
 	}

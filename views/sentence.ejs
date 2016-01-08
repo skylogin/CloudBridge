@@ -39,6 +39,7 @@
 <script src="/resource/js/jquery.min.js"></script> 
 <script src="/resource/js/bootstrap.min.js"></script>
 <script src="/resource/js/constants.js"></script>
+<script src="/resource/js/common.js"></script>
 <script src="http://jsgetip.appspot.com"></script>
 
 <script type="text/javascript">
@@ -70,15 +71,19 @@
 
 		socket.on("USER_ADD", function(data){
 			modifyUserCount(data.newUserCount);
-			addMessage(data, 0);
+			commonMessage(data, 0);
+			flashWindow(data.newNick, 2000);
 		});
 
 		socket.on("MSG_ADD", function(data){
-			addMessage(data, 1);
+			createMessage(data, 1);
+			flashWindow(data.newNick, 2000);
 		});
 
 		socket.on("DISCONNECTED", function(data) {
 			modifyUserCount(data.newUserCount);
+			commonMessage(data, 1);
+			flashWindow(data.newNick, 2000);
         });
 
 	});
@@ -88,27 +93,41 @@
 		$("#remainUser").html(count);
 	}
 
-	/* 메시지를 붙여줌 */
-	function addMessage(data, count){
+	function commonMessage(data, flag){
+		var newUserName = data.newNick;
+		var newUserTime = data.newTime;
+
+		if(typeof newUserName == "undefined"){
+			var li;
+			if(flag == 0){
+				li = $("<code>" + CONSTANT.getValue("chatMessage1", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
+			} else if(flag == 1){
+				li = $("<code>" + CONSTANT.getValue("chatMessage2", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
+			}
+			
+			addMessage(li);
+		}
+	}
+
+	function createMessage(data, count){
 		var newUserName = data.newNick;
 		var newUserMsg = data.newMsg;
 		var newUserTime = data.newTime;
 		printTimeCount += count;
-
-		var whiteSpace = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+		var li;
 
 		if(printTimeCount > 5){
 			printTimeCount = 0;
-			var li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
+			li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
 		} else{
-			if(typeof newUserName != "undefined"){
-				var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
-			} else{
-				var li = $("<code>" + CONSTANT.getValue("chatMessage", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
-			}
+			li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
 		}
 
-		
+		addMessage(li);
+	}
+
+	/* 메시지를 붙여줌 */
+	function addMessage(li){
 		$(".list-group-item").append(li);
 
 		/* 스크롤 */
