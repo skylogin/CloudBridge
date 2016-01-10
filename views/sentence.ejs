@@ -68,24 +68,24 @@
 			uIp: uIp
 		});
 
-		socket.on("USER_ADD", function(data){
+		socket.on("USERADD", function(data){
 			modifyUserCount(data.newUserCount);
 			commonMessage(data, 0);
-			flashWindow(data.newNick, 2000);
+			//flashWindow(data.newNick, 2000);
 		});
 
-		socket.on("MSG_ADD", function(data){
+		socket.on("MSGADD", function(data){
 			createMessage(data);
-			flashWindow(data.newNick, 2000);
+			//flashWindow(data.newNick, 2000);
 		});
 
 		socket.on("DISCONNECTED", function(data) {
 			modifyUserCount(data.newUserCount);
 			commonMessage(data, 1);
-			flashWindow(data.newNick, 2000);
+			//flashWindow(data.newNick, 2000);
         });
 
-        socket.on("TIME_ADD", function(data){
+        socket.on("TIMEADD", function(data){
         	commonMessage(data, 2);
         });
 
