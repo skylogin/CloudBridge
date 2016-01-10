@@ -64,28 +64,28 @@
 			"force new connection": true
 		});
 
-		socket.emit("USER_ENTER", {
+		socket.emit("c_USERENTER_s", {
 			uIp: uIp
 		});
 
-		socket.on("USERADD", function(data){
+		socket.on("s_USERENTER_c", function(data){
 			modifyUserCount(data.newUserCount);
 			commonMessage(data, 0);
 			//flashWindow(data.newNick, 2000);
 		});
 
-		socket.on("MSGADD", function(data){
+		socket.on("s_USERMSG_c", function(data){
 			createMessage(data);
 			//flashWindow(data.newNick, 2000);
 		});
 
-		socket.on("DISCONNECTED", function(data) {
+		socket.on("s_DISCONNECT_c", function(data) {
 			modifyUserCount(data.newUserCount);
 			commonMessage(data, 1);
 			//flashWindow(data.newNick, 2000);
         });
 
-        socket.on("TIMEADD", function(data){
+        socket.on("s_HASHTIME_c", function(data){
         	commonMessage(data, 2);
         });
 
@@ -145,7 +145,7 @@
 
 			$("#userContent").val("");
 
-			socket.emit("CHAT_MSG", {
+			socket.emit("c_USERMSG_s", {
 				nick: userName,
 				msg: userContent,
 				uIP: uIp
