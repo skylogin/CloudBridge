@@ -45,7 +45,6 @@
 <script type="text/javascript">
 	var langFlag = getParameterByName("langFlag");
 	var uIp = ip();
-	var printTimeCount = 0;
 
 	function setActiveMenu(number){
 		$("#menu"+number).addClass("active");
@@ -76,7 +75,7 @@
 		});
 
 		socket.on("MSG_ADD", function(data){
-			createMessage(data, 1);
+			createMessage(data);
 			flashWindow(data.newNick, 2000);
 		});
 
@@ -84,6 +83,10 @@
 			modifyUserCount(data.newUserCount);
 			commonMessage(data, 1);
 			flashWindow(data.newNick, 2000);
+        });
+
+        socket.on("TIME_ADD", function(data){
+        	commonMessage(data, 2);
         });
 
 	});
@@ -99,29 +102,23 @@
 
 		if(typeof newUserName == "undefined"){
 			var li;
-			if(flag == 0){
-				li = $("<code>" + CONSTANT.getValue("chatMessage1", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
-			} else if(flag == 1){
-				li = $("<code>" + CONSTANT.getValue("chatMessage2", langFlag) +"</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
+			if(flag == 0){	/* 들어오기 찍기 */
+				li = $("<code>" + CONSTANT.getValue("chatMessage1", langFlag) + "</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
+			} else if(flag == 1){	/* 나가기 찍기 */
+				li = $("<code>" + CONSTANT.getValue("chatMessage2", langFlag) + "</code>" + whiteSpace + "(" + newUserTime + ")<br/>");
+			} else if(flag == 2){	/* 시간 찍기*/
+				li = $("<code>" + newUserTime + "</code>" + "<br/>");
 			}
 			
 			addMessage(li);
 		}
 	}
 
-	function createMessage(data, count){
+	function createMessage(data){
 		var newUserName = data.newNick;
 		var newUserMsg = data.newMsg;
 		var newUserTime = data.newTime;
-		printTimeCount += count;
-		var li;
-
-		if(printTimeCount > 5){
-			printTimeCount = 0;
-			li = $("<code>" + newUserName + "</code> " + newUserMsg + whiteSpace + "(" + newUserTime + ")<br/>");
-		} else{
-			li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
-		}
+		var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
 
 		addMessage(li);
 	}
