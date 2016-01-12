@@ -86,6 +86,7 @@
         });
 
         socket.on("s_HASHTIME_c", function(data){
+        	createMessage(data);
         	commonMessage(data, 2);
         });
 
@@ -117,7 +118,6 @@
 	function createMessage(data){
 		var newUserName = data.newNick;
 		var newUserMsg = data.newMsg;
-		var newUserTime = data.newTime;
 		var li = $("<code>" + newUserName + "</code> " + newUserMsg + "<br/>");
 
 		addMessage(li);
